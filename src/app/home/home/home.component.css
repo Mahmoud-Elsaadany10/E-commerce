@@ -1,0 +1,136 @@
+
+.card {
+  border: none;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.prd-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.search {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 14px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+  /* width: 44%; */
+}
+
+.search:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.25);
+}
+
+.search-btn {
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+  width: 20%;
+}
+
+.card-img-top {
+  height: 220px;
+  object-fit: cover;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2b3e7e;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #555;
+  height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.card-body h6 {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: #0b456a;
+}
+
+.card-body p {
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+
+.box-bottom {
+  padding: 1rem;
+  border-top: 1px solid #eee;
+  background-color: #fafafa;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.btn {
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.x{
+  outline: none;
+  border-color: transparent;
+  padding: 2px;
+  padding: 0;
+  right: 18px;
+  top: 50%;
+  z-index: 66;
+  transform: translate(0, -50%);
+  position: absolute;
+  border: none;
+  padding: 0 4px;
+  border-radius: 12px;
+}
+.x:hover{
+  background-color: rgba(226, 0, 0, 0.829);
+  color: white ;
+}
+.btn-light {
+  background-color: #f1f1f1;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.btn-light:hover {
+  background-color: #ddd;
+  color: #000;
+}
+
+.btn-primary {
+  background-color: #2b3e7e;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #1f2e5c;
+}
+
+@media (max-width: 768px) {
+
+  .search-btn{
+    width: fit-content;
+  }
+
+}
+

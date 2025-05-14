@@ -1,0 +1,80 @@
+<div class="cart container">
+  <div class="top-bx d-flex flex-column flex-md-row justify-content-between align-items-center p-4 rounded shadow-sm mb-4">
+    <div class="box1 text-center text-md-start mb-3 mb-md-0">
+      <h2 class="mb-1">🛒 Shopping Cart</h2>
+      <p class="mb-0">Items ({{cartProducts.length}})</p>
+    </div>
+    <div class="box-2">
+      <a class="btn continue-btn" (click)="navToHome()" role="button">Continue Shopping</a>
+    </div>
+  </div>
+
+
+  <div *ngIf="cartProducts.length !== 0" class="d-flex flex-column flex-lg-row justify-content-between">
+
+
+    <div class="cart-items flex-grow-1 me-lg-4">
+      <div *ngFor="let item of cartProducts" class="card-prd shadow-sm rounded p-3 mb-4 bg-white">
+        <div class="row align-items-center">
+
+          <div class="col-md-5 text-center mb-3 mb-md-0">
+            <img [src]="item.imageUrl" alt="Product Image" class="img-fluid rounded product-img" />
+          </div>
+
+          <div class="col-md-7">
+            <div class="content">
+              <p class="text-muted mb-2">Price: <strong>{{ item.price }} L.E</strong></p>
+            </div>
+
+            <div class="actions">
+              <div class="qty d-flex align-items-center mb-3">
+                <button class="btn btn-outline-danger"
+                        (click)="updateQuantity(item.quantity - 1, item.productId)"
+                        [disabled]="item.quantity <= 1">
+                  <i class="fa-solid fa-minus"></i>
+                </button>
+
+                <span class="mx-3">{{ item.quantity }}</span>
+
+                <button class="btn btn-outline-success"
+                        (click)="updateQuantity(item.quantity + 1, item.productId)">
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+              </div>
+
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="totle-price fw-semibold">
+                  Total: {{ item.price * item.quantity }} L.E
+                </div>
+                <div class="remove">
+                  <button (click)="removeFromCart(item.productId)" class="btn btn-sm btn-danger">
+                    <i class="fa-solid fa-trash me-1"></i> Remove
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="order-summary-box position-sticky top-0 "*ngIf="cartProducts.length > 0" >
+      <div class="bg-white p-4 rounded shadow-sm mt-lg-4">
+        <h4>🧾 Order Summary</h4>
+        <hr />
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="prc fw-semibold">
+            Total Order Price: {{ totalPrice | currency:'EGP':'symbol' }}
+          </div>
+          <a class="btn btn-success px-4 py-2 ms-2" role="button" (click)="confirmOrder()">Pay</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div *ngIf="cartProducts.length === 0" class="text-center">
+    <h3 class="mt-5">Your cart is empty.</h3>
+  </div>
+</div>

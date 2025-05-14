@@ -1,0 +1,108 @@
+<div class="container mt-4">
+  <div class="row">
+
+    <div class="col-md-3">
+      <div class="position-sticky my-4 top-0">
+        <div class="card p-3 mb-4 shadow-sm">
+          <h5 class="mb-3">Filter Products</h5>
+
+          <div class="mb-3">
+            <label for="minPrice" class="form-label">Min Price</label>
+            <input type="number" id="minPrice" [(ngModel)]="minPrice" class="form-control" />
+          </div>
+
+          <div class="mb-3">
+            <label for="maxPrice" class="form-label">Max Price</label>
+            <input type="number" id="maxPrice" [(ngModel)]="maxPrice" class="form-control" />
+          </div>
+
+          <div class="mb-3">
+            <label for="sortBy" class="form-label">Sort By</label>
+            <select id="sortBy" class="form-select" [(ngModel)]="sortBy">
+              <option value="name">Name</option>
+              <option value="price">Price</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="sortDirection" class="form-label">Sort Direction</label>
+            <select id="sortDirection" class="form-select" [(ngModel)]="sortDirection">
+              <option value="asc">Ascending</option>
+              <option value="desc">Descending</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <select id="category" class="form-select" [(ngModel)]="selectedCategory">
+              <option value="">All</option>
+              <option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</option>
+            </select>
+          </div>
+
+          <button class="btn btn-primary w-100 mt-2" (click)="applyFilter()">Apply Filter</button>
+          <button class="btn btn-secondary w-100 mt-2" (click)="resetFilter()">Reset Filter</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-9">
+
+      <div class="justify-content-center d-flex mb-5">
+        <div class="position-relative">
+          <input type="text"
+                 class="rounded-pill search input me-2"
+                 [(ngModel)]="searchName"
+                 placeholder="Search by name..." />
+          <button [hidden]="hide" class="x" (click)="onClickButton()">
+            <i class="fa-solid fa-x"></i>
+          </button>
+        </div>
+
+        <button (click)="searchProducts()"
+                class="rounded-pill search btn btn-primary ms-2">
+          <i class="fa-solid fa-magnifying-glass me-2"></i>Search
+        </button>
+      </div>
+
+      <div class="row g-4" *ngIf=" products.length > 0">
+        <div class="col-md-6 col-lg-4 d-flex justify-content-center" *ngFor="let product of products">
+          <div class="card prd-card" style="width: 18rem;">
+            <img class="card-img-top" [src]="product.imageUrl" alt="Product image" />
+            <div class="card-body text-center">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text">{{ product.description }}</p>
+              <h6 class="text-primary">{{ product.price | currency }}</h6>
+              <p><strong>Category:</strong> {{ product.categoryName }}</p>
+              <p><strong>Quantity:</strong> {{ product.quantity }}</p>
+            </div>
+            <div class="box-bottom d-flex flex-column justify-content-center align-items-center gap-2">
+              <button (click)="sendData(product.id)" class="btn btn-light w-75">Add to Cart</button>
+              <a class="btn btn-primary w-75" (click)="showDetails(product.id)">View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="text-center mt-5" *ngIf=" products.length === 0">
+        <h4 class="text-muted">No products found.</h4>
+      </div>
+
+      <ngb-pagination *ngIf="products.length > 0"
+                      class="d-flex justify-content-center py-4"
+                      [(page)]="page"
+                      [pageSize]="pageSize"
+                      [collectionSize]="totalPages"
+                      [maxSize]="dynamicMaxSize"
+                      (pageChange)="onPageChange($event)">
+        <ng-template ngbPaginationPrevious>Prev</ng-template>
+        <ng-template ngbPaginationNext>Next</ng-template>
+      </ngb-pagination>
+
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

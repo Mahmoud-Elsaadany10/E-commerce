@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand text-light" href="#">Fashion</a>
+
+    <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+<div class="collapse navbar-collapse" id="navbarNav" #navCollapse>
+  <div class="navbar-nav ms-auto">
+    <a routerLink="/home" routerLinkActive="active-link" class="nav-link me-3" (click)="navCollapse.classList.remove('show')">Home</a>
+    <a routerLink="/cart" routerLinkActive="active-link" class="nav-link me-3" (click)="navCollapse.classList.remove('show')">Cart</a>
+    <a routerLink="/login" [hidden]="!isLogged" routerLinkActive="active-link" class="nav-link me-3" (click)="navCollapse.classList.remove('show')">Login</a>
+    <a routerLink="/register" [hidden]="!isLogged" routerLinkActive="active-link" class="nav-link me-3" (click)="navCollapse.classList.remove('show')">Register</a>
+    <a routerLink="/register" (click)="openConfirmModal(); navCollapse.classList.remove('show')" [hidden]="isLogged" routerLinkActive="active-link" class="nav-link">Logout</a>
+  </div>
+</div>
+
+  </div>
+</nav>

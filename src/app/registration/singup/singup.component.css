@@ -1,0 +1,85 @@
+
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #f4f4f4;
+}
+.end-i{
+  right: 17px;
+  top: 47%;
+  z-index: 66;
+  transform: translate(0, -50%);
+  position: absolute;
+}
+.register-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+
+h2 {
+  color: #2b3e7e;
+  margin-bottom: 20px;
+}
+
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+input.is-invalid {
+  border-color: #e74c3c;
+}
+
+button {
+  background-color: #2b3e7e;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:disabled {
+  background-color: #ddd;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 12px;
+}
+
+label {
+  font-size: 14px;
+  color: #555;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
