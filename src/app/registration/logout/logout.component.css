@@ -1,6 +1,5 @@
-p{
+p {
   font-size: large;
-
 }
 
 .top-modal .modal-dialog {
@@ -8,7 +7,8 @@ p{
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  width: auto;
+  width: 600px;
+  max-width: 95%;
   margin: 0;
   z-index: 1055;
 }
@@ -16,4 +16,26 @@ p{
 .top-modal .modal-content {
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+}
+
+@media (max-width: 768px) {
+  .top-modal .modal-dialog {
+    width: 90%;
+  }
+}
+
+@media (max-width: 576px) {
+  .modal-body p {
+    font-size: 1rem;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .modal-footer .btn {
+    width: 100%;
+  }
 }
